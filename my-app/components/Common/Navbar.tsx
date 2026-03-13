@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ShoppingCart, User, Search } from "lucide-react";
-import Logo from "./Animation/Logo";
+import Logo from "../Animation/Logo";
 
 export default function Navbar() {
   return (
