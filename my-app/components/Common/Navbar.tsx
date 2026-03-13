@@ -5,12 +5,13 @@ import { ShoppingCart, User, Search } from "lucide-react";
 import Logo from "../Animation/Logo";
 import { useAuth } from "@/context/AuthContext";
 import { useCart } from "@/context/CartContext";
-
+import CartDrawer from "@/components/Cart/CartDrawer";
+import { useState } from "react";
 export default function Navbar() {
   const { user, logout } = useAuth();
-
+const [cartOpen, setCartOpen] = useState(false);
 const { cart } = useCart();
-
+const cartCount = cart.reduce((total:any, item:any) => total + item.qty, 0);
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
 
@@ -43,7 +44,7 @@ const { cart } = useCart();
 
         {/* Right Section */}
         <div className="flex items-center gap-4 md:gap-6 order-2 md:order-3">
-
+    
           {/* Account/Login */}
           {user ? (
             <button
@@ -61,18 +62,18 @@ const { cart } = useCart();
           )}
 
           {/* Cart */}
-         <Link href="/cart" className="flex items-center gap-1 relative">
+  <button
+  onClick={() => setCartOpen(true)}
+  className="flex items-center gap-1 relative"
+>
   <ShoppingCart size={20} />
-
-  {cart.length > 0 && (
+  {cartCount > 0 && (
     <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-1 rounded">
-      {cart.length}
+      {cartCount}
     </span>
   )}
-
   <span className="hidden md:inline">Cart</span>
-</Link>
-
+</button>
         </div>
 
       </div>
@@ -81,8 +82,13 @@ const { cart } = useCart();
       <div className="flex gap-6 md:gap-8 px-4 md:px-8 py-3 border-t text-gray-700 text-sm font-medium overflow-x-auto">
         <Link href="/">Home</Link>
         <Link href="/product">🥛 Milk Products</Link>
+  {user && (
+  <Link href="/orders">
+    Orders
+  </Link>
+)}
       </div>
-
+<CartDrawer open={cartOpen} setOpen={setCartOpen} />
     </nav>
   );
 }

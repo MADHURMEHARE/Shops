@@ -3,28 +3,62 @@
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import RazorpayCheckout from "@/components/payment/RazorpayCheckout";
 
 export default function CheckoutPage() {
-const { cart, clearCart } = useCart();
+  const { cart, clearCart } = useCart();
   const router = useRouter();
-
   const [address, setAddress] = useState("");
 
   const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 
-  const handlePlaceOrder = () => {
-    if (!address) {
-      alert("Please enter delivery address");
+  // Load Razorpay SDK
+ const loadRazorpay = () => {
+  return new Promise((resolve) => {
+    const existing = document.getElementById("razorpay-script");
+    if (existing) {
+      resolve(true);
       return;
     }
 
-   router.push("/order-success");
-    clearCart();
+    const script = document.createElement("script");
+    script.id = "razorpay-script";
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
 
-    
+    script.onload = () => {
+      console.log("Razorpay SDK loaded");
+      resolve(true);
+    };
 
-  };
+    script.onerror = () => {
+      console.log("Razorpay SDK failed");
+      resolve(false);
+    };
 
+    document.body.appendChild(script);
+  });
+};
+
+  // Handle payment
+ const handlePayment = async () => {
+  if (!address) {
+    alert("Please enter delivery address");
+    return;
+  }
+
+  const loaded = await loadRazorpay();
+
+  if (!loaded) {
+    alert("Razorpay SDK failed to load");
+    return;
+  }
+
+  console.log("window.Razorpay:", window.Razorpay);
+
+RazorpayCheckout(total, cart, clearCart, router);
+};
+
+  // Empty cart state
   if (cart.length === 0) {
     return (
       <div className="flex justify-center items-center min-h-[60vh]">
@@ -78,10 +112,10 @@ const { cart, clearCart } = useCart();
         </div>
 
         <button
-          onClick={handlePlaceOrder}
+          onClick={handlePayment}
           className="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600"
         >
-          Place Order
+          Pay Now
         </button>
 
       </div>
