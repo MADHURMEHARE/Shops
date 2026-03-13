@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function CheckoutPage() {
-  const { cart } = useCart();
+const { cart, clearCart } = useCart();
   const router = useRouter();
 
   const [address, setAddress] = useState("");
@@ -19,8 +19,9 @@ export default function CheckoutPage() {
     }
 
    router.push("/order-success");
+    clearCart();
 
-    localStorage.removeItem("cart");
+    
 
   };
 

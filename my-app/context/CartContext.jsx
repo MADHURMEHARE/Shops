@@ -50,7 +50,10 @@ export function CartProvider({ children }) {
     setCart(updated);
     localStorage.setItem("cart", JSON.stringify(updated));
   };
-
+const clearCart = () => {
+  setCart([]); // clear React state
+  localStorage.removeItem("cart"); // clear storage
+};
   // Remove item
   const removeFromCart = (id) => {
     const updated = cart.filter((item) => item.id !== id);
@@ -67,6 +70,7 @@ export function CartProvider({ children }) {
         increaseQty,
         decreaseQty,
         removeFromCart,
+         clearCart,
       }}
     >
       {children}
