@@ -34,19 +34,24 @@ export default function RootLayout({
 
 
   return (
-    <html lang="en">
-   
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <RegisterSW />
-        {/* <OfflinePopup isOnline={isOnline} /> */}
-         <NetworkStatusProvider/>
-        <Navbar />
-        {children}
-        <Footer/>
-          <PWAInstallPrompt />
-      </body>
-    </html>
+   <html lang="en" suppressHydrationWarning>
+  <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
+    <RegisterSW />
+
+    <NetworkStatusProvider />
+
+    <Navbar />
+
+    <main>
+      {children}
+    </main>
+
+    <Footer />
+
+    <PWAInstallPrompt />
+
+  </body>
+</html>
   );
 }

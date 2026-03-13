@@ -4,26 +4,25 @@ import Link from "next/link";
 
 export default function Page() {
   return (
-    <div className="min-h-screen bg-gray-50">
+     <div className="min-h-screen bg-gray-50">
 
       {/* HERO SECTION */}
-      <section className="relative text-white text-center py-24 px-6 overflow-hidden">
+      <section className="relative text-white text-center min-h-[100vh] md:min-h-[60vh] flex items-center justify-center px-6 overflow-hidden">
 
-        {/* Milk Background Image */}
+        {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1550583724-b2692b85b150?w=1600')"
           }}
-        ></div>
+        />
 
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50" />
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto">
-
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Anandvan Dairy & Grocery
           </h1>
@@ -37,17 +36,16 @@ export default function Page() {
               Visit our products
             </button>
           </Link>
-
         </div>
 
       </section>
 
 
-      {/* MAIN SECTION */}
-      <div className="flex flex-col md:flex-row p-6 md:p-8 gap-8">
+      {/* MAIN SECTION (Hidden on Mobile) */}
+      <div className="hidden md:flex flex-row p-6 md:p-8 gap-8">
 
         {/* SIDEBAR */}
-        <aside className="w-full md:w-60 bg-white p-6 rounded-lg shadow">
+        <aside className="w-60 bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-semibold mb-4">Categories</h3>
 
           <ul className="space-y-3 text-gray-700">
@@ -58,10 +56,8 @@ export default function Page() {
           </ul>
         </aside>
 
-
         {/* MAIN CONTENT */}
         <main className="flex-1">
-
           <h2 className="text-2xl font-bold mb-3">
             Welcome to Anandwan Local Shop
           </h2>
@@ -71,7 +67,6 @@ export default function Page() {
             from your nearby Anandwan trusted shop.
           </p>
 
-          {/* MILK DEAL */}
           <div className="bg-yellow-100 p-6 rounded-lg shadow">
             <h3 className="text-lg font-semibold mb-2">
               🥛 Today's Milk Offer
@@ -83,11 +78,10 @@ export default function Page() {
 
             <Link href="/product">
               <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
-              click to visit
+                Click to Visit
               </button>
             </Link>
           </div>
-
         </main>
 
       </div>
