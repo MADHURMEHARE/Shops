@@ -48,7 +48,7 @@ export default function Navbar() {
       {/* Bottom Category Menu */}
       <div className="flex gap-8 px-8 py-3 border-t text-gray-700 text-sm font-medium">
         <Link href="/home">Home</Link>
-        <Link href="/category/grocery">Grocery</Link>
+        <Link href="/product">Grocery</Link>
       </div>
 
     </nav>
