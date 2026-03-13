@@ -1,6 +1,23 @@
 "use client";
 
+import { useCart } from "@/context/CartContext";
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/navigation";
+
 export default function ProductCard({ product }) {
+  const { addToCart } = useCart();
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const handleAddToCart = () => {
+    if (!user) {
+      router.push("/login");
+      return;
+    }
+
+    addToCart(product);
+  };
+
   return (
     <div className="border border-gray-200 rounded-xl p-3 bg-white shadow-sm hover:shadow-md transition">
 
@@ -18,7 +35,10 @@ export default function ProductCard({ product }) {
         ₹{product.price}
       </p>
 
-      <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">
+      <button
+        onClick={handleAddToCart}
+        className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
+      >
         Add to Cart
       </button>
 
