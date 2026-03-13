@@ -2,39 +2,26 @@
 
 export default function ProductCard({ product }) {
   return (
-    <div
-      style={{
-        border: "1px solid #ddd",
-        borderRadius: "10px",
-        padding: "12px",
-        background: "#fff"
-      }}
-    >
+    <div className="border border-gray-200 rounded-xl p-3 bg-white shadow-sm hover:shadow-md transition">
+
       <img
-  src={product.image}
-  alt={product.name}
-  style={{
-    width: "100%",
-    height: "180px",
-    objectFit: "cover",
-    borderRadius: "8px"
-  }}
-/>
+        src={product.image}
+        alt={product.name}
+        className="w-full h-[180px] object-cover rounded-lg"
+      />
 
-      <h3>{product.name}</h3>
-      <p>₹{product.price}</p>
+      <h3 className="text-black font-semibold mt-3">
+        {product.name}
+      </h3>
 
-      <button
-        style={{
-          padding: "8px 12px",
-          background: "#000",
-          color: "#fff",
-          border: "none",
-          borderRadius: "6px"
-        }}
-      >
+      <p className="text-black font-medium mb-3">
+        ₹{product.price}
+      </p>
+
+      <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition">
         Add to Cart
       </button>
+
     </div>
   );
 }
