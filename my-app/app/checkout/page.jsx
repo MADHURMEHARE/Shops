@@ -18,11 +18,10 @@ export default function CheckoutPage() {
       return;
     }
 
-    alert("Order placed successfully!");
+   router.push("/order-success");
 
     localStorage.removeItem("cart");
 
-    router.push("/");
   };
 
   if (cart.length === 0) {
