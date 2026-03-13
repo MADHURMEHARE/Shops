@@ -4,9 +4,12 @@ import Link from "next/link";
 import { ShoppingCart, User, Search } from "lucide-react";
 import Logo from "../Animation/Logo";
 import { useAuth } from "@/context/AuthContext";
+import { useCart } from "@/context/CartContext";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
+
+const { cart } = useCart();
 
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-md">
@@ -58,10 +61,17 @@ export default function Navbar() {
           )}
 
           {/* Cart */}
-          <Link href="/cart" className="flex items-center gap-1">
-            <ShoppingCart size={20} />
-            <span className="hidden md:inline">Cart</span>
-          </Link>
+         <Link href="/cart" className="flex items-center gap-1 relative">
+  <ShoppingCart size={20} />
+
+  {cart.length > 0 && (
+    <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-1 rounded">
+      {cart.length}
+    </span>
+  )}
+
+  <span className="hidden md:inline">Cart</span>
+</Link>
 
         </div>
 

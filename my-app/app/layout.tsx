@@ -8,6 +8,7 @@ import PWAInstallPrompt from "@/components/PWA/PWAInstallPrompt";
 import { AuthProvider } from "@/context/AuthContext";
 import RegisterSW from "@/components/PWA/RegisterSW";
 import NetworkStatusProvider  from "../components/PWA/NetworkStatusProvider";
+import { CartProvider } from "@/context/CartContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
+          <CartProvider>
         <RegisterSW />
         {/* <OfflinePopup isOnline={isOnline} /> */}
          <NetworkStatusProvider/>
@@ -42,6 +44,7 @@ export default function RootLayout({
         {children}
         <Footer/>
           <PWAInstallPrompt />
+          </CartProvider>
         </AuthProvider>
 
       </body>
