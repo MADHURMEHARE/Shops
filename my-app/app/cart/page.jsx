@@ -1,7 +1,7 @@
 "use client";
 
 import { useCart } from "@/context/CartContext";
-
+import Link from "next/link";
 export default function CartPage() {
   const { cart, increaseQty, decreaseQty, removeFromCart } = useCart();
 
@@ -72,11 +72,19 @@ export default function CartPage() {
       </div>
 
       {/* Total */}
-      <div className="mt-6 text-right">
-        <h2 className="text-xl font-bold">
-          Total: ₹{total}
-        </h2>
-      </div>
+     <div className="mt-6 text-right">
+
+  <h2 className="text-xl font-bold mb-3">
+    Total: ₹{total}
+  </h2>
+
+  <Link href="/checkout">
+    <button className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">
+      Proceed to Checkout
+    </button>
+  </Link>
+
+</div>
 
     </div>
   );
