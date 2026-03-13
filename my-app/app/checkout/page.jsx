@@ -26,12 +26,12 @@ export default function CheckoutPage() {
     script.src = "https://checkout.razorpay.com/v1/checkout.js";
 
     script.onload = () => {
-      console.log("Razorpay SDK loaded");
+    
       resolve(true);
     };
 
     script.onerror = () => {
-      console.log("Razorpay SDK failed");
+    
       resolve(false);
     };
 
@@ -53,7 +53,7 @@ export default function CheckoutPage() {
     return;
   }
 
-  console.log("window.Razorpay:", window.Razorpay);
+
 
 RazorpayCheckout(total, cart, clearCart, router);
 };

@@ -22,7 +22,6 @@ export default async function RazorpayCheckout(total, cart, clearCart, router) {
 
     handler: function (response) {
 
-      console.log("Payment Success:", response);
 
       const newOrder = {
         id: Date.now(),

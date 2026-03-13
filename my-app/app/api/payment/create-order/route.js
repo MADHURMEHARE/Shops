@@ -10,7 +10,7 @@ export async function POST(req) {
       key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
       key_secret: process.env.RAZORPAY_SECRET,
     });
-console.log("Backend amount:", amount);
+
     const order = await razorpay.orders.create({
       amount: amount * 100,
       currency: "INR",
@@ -20,7 +20,7 @@ console.log("Backend amount:", amount);
     return NextResponse.json(order);
 
   } catch (error) {
-    console.error("Razorpay Error:", error);
+   
 
     return NextResponse.json(
       { error: "Payment order creation failed" },

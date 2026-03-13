@@ -10,12 +10,12 @@ export default function useNetworkStatus() {
 
     const handleOnline = () => {
       setIsOnline(true);
-      console.log("Back online");
+  
     };
 
     const handleOffline = () => {
       setIsOnline(false);
-      console.log("You are offline");
+    
     };
 
     window.addEventListener("online", handleOnline);
