@@ -1,4 +1,4 @@
-"use client";
+
 
 import { useCart } from "@/context/CartContext";
 import { useRouter } from "next/navigation";
