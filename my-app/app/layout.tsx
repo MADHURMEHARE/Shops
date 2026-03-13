@@ -7,7 +7,9 @@ import Footer from "@/components/Footer";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 
 import RegisterSW from "@/components/RegisterSW";
-
+// import OfflinePopup from "@/components/OfflinePopup";
+// import useNetworkStatus from "@/hooks/useNetworkStatus";
+import NetworkStatusProvider from "@/components/NetworkStatusProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -38,6 +40,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <RegisterSW />
+        {/* <OfflinePopup isOnline={isOnline} /> */}
+         <NetworkStatusProvider/>
         <Navbar />
         {children}
         <Footer/>

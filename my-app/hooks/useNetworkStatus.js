@@ -5,17 +5,25 @@ export default function useNetworkStatus() {
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
+    // set correct initial state
     setIsOnline(navigator.onLine);
 
-    const online = () => setIsOnline(true);
-    const offline = () => setIsOnline(false);
+    const handleOnline = () => {
+      setIsOnline(true);
+      console.log("Back online");
+    };
 
-    window.addEventListener("online", online);
-    window.addEventListener("offline", offline);
+    const handleOffline = () => {
+      setIsOnline(false);
+      console.log("You are offline");
+    };
+
+    window.addEventListener("online", handleOnline);
+    window.addEventListener("offline", handleOffline);
 
     return () => {
-      window.removeEventListener("online", online);
-      window.removeEventListener("offline", offline);
+      window.removeEventListener("online", handleOnline);
+      window.removeEventListener("offline", handleOffline);
     };
   }, []);
 
