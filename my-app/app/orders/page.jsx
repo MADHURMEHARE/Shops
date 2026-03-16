@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import OrdersList from "@/components/orders/OrdersList";
+import OrdersList from "../components/orders/ordersList";
 
 export default function OrdersPage() {
 
