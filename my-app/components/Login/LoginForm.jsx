@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-export default function LoginForm() {
+function LoginForm() {
   const { login } = useAuth();
   const router = useRouter();
 
@@ -42,3 +42,5 @@ export default function LoginForm() {
     </form>
   );
 }
+
+export default LoginForm;
