@@ -23,7 +23,7 @@ export async function POST(req) {
    
 
     return NextResponse.json(
-      { error: "Payment order creation failed" },
+      { error: "Payment order creation fail" },
       { status: 500 }
     );
   }
