@@ -1,6 +1,6 @@
 import AboutPage from "@/components/About/Aboutpage";
 
-export default function Page() 
+export default function Pag() 
 
 {
    return (
