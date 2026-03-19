@@ -1,10 +1,31 @@
 "use client";
 
+// import { useAuth } from "@/context/AuthContext";
+// import { useRouter } from "next/router";
 import { useState } from "react";
+import LoginForm from "./LoginForm";
 
 export default function LoginForm2() {
   const [mode, setMode] = useState("login");
   const [role, setRole] = useState("user");
+  const [user, setuser] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  // const { login } = useAuth();
+  // const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setuser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(user)
+    // router.push("/");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -67,35 +88,12 @@ export default function LoginForm2() {
             {mode === "login" ? "Login to your account" : "Create an account"}
           </h2>
 
-          <form className="space-y-4">
-            {/* Email */}
-            <input
-              type="text"
-              placeholder="Email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
-            />
-
-            {/* Password */}
-            <input
-              type="password"
-              placeholder="Password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
-            />
-
-            {/* Confirm Password (Signup only) */}
-            {mode === "signup" && (
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
-              />
-            )}
-
-            {/* Button */}
-            <button className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
-              {mode === "login" ? "Login" : "Sign Up"}
-            </button>
-          </form>
+          <LoginForm
+            mode={mode}
+            user={user}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
         </div>
       </div>
     </div>
