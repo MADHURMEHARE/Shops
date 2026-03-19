@@ -1,10 +1,22 @@
 "use client";
 
+import { useAuth } from "@/context/AuthContext";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export default function LoginForm2() {
   const [mode, setMode] = useState("login");
   const [role, setRole] = useState("user");
+  const [username, setUsername] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push("/");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -71,6 +83,8 @@ export default function LoginForm2() {
             {/* Email */}
             <input
               type="text"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
               placeholder="Email"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
             />
@@ -78,6 +92,8 @@ export default function LoginForm2() {
             {/* Password */}
             <input
               type="password"
+              onChange={(e) => setUserPassword(e.target.value)}
+              value={userPassword}
               placeholder="Password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
             />
@@ -86,13 +102,19 @@ export default function LoginForm2() {
             {mode === "signup" && (
               <input
                 type="password"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
                 placeholder="Confirm Password"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
               />
             )}
 
             {/* Button */}
-            <button className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+            <button
+              type="submit"
+              onSubmit={handleSubmit}
+              className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+            >
               {mode === "login" ? "Login" : "Sign Up"}
             </button>
           </form>
