@@ -19,7 +19,7 @@ const cartCount = cart.reduce((total:any, item:any) => total + item.qty, 0);
       <div className="flex flex-wrap items-center justify-between px-4 md:px-8 py-3 gap-3">
 
         {/* Logo + Milk Image */}
-        <div className="flex items-center gap-2 w-[160px] md:w-[200px]">
+        <div className="flex items-center gap-2 w-40 md:w-50">
           <Logo />
 
           <img
@@ -31,7 +31,7 @@ const cartCount = cart.reduce((total:any, item:any) => total + item.qty, 0);
 
         {/* Search */}
         <div className="order-3 md:order-2 w-full md:w-auto flex justify-center">
-          <div className="flex items-center border rounded-lg px-3 py-2 w-full md:w-[400px] border-gray-300">
+          <div className="flex items-center border rounded-lg px-3 py-2 w-full md:w-100 border-gray-300">
             <Search size={18} className="text-gray-500" />
 
             <input
