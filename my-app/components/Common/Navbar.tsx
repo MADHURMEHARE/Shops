@@ -31,13 +31,13 @@ const cartCount = cart.reduce((total:any, item:any) => total + item.qty, 0);
 
         {/* Search */}
         <div className="order-3 md:order-2 w-full md:w-auto flex justify-center">
-          <div className="flex items-center border rounded-lg px-3 py-2 w-full md:w-[400px]">
+          <div className="flex items-center border rounded-lg px-3 py-2 w-full md:w-[400px] border-gray-300">
             <Search size={18} className="text-gray-500" />
 
             <input
               type="text"
               placeholder="Search for milk, dairy..."
-              className="ml-2 w-full outline-none text-sm"
+              className="ml-2 w-full outline-none text-sm placeholder-gray-400 text-gray-900"
             />
           </div>
         </div>
@@ -56,8 +56,8 @@ const cartCount = cart.reduce((total:any, item:any) => total + item.qty, 0);
             </button>
           ) : (
             <Link href="/login" className="flex items-center gap-1">
-              <User size={20} />
-              <span className="hidden md:inline">Login</span>
+              <User size={20} className="text-gray-400" />
+              <span className="hidden md:inline text-gray-400">Login</span>
             </Link>
           )}
 
@@ -66,13 +66,13 @@ const cartCount = cart.reduce((total:any, item:any) => total + item.qty, 0);
   onClick={() => setCartOpen(true)}
   className="flex items-center gap-1 relative"
 >
-  <ShoppingCart size={20} />
+  <ShoppingCart size={20} className="text-gray-400" />
   {cartCount > 0 && (
-    <span className="absolute -top-2 -right-3 bg-red-500 text-white text-xs px-1 rounded">
+    <span className="absolute -top-2 -right-3 bg-red-500 text-gray-400 text-xs px-1 rounded">
       {cartCount}
     </span>
   )}
-  <span className="hidden md:inline">Cart</span>
+  <span className="hidden md:inline text-gray-400">Cart</span>
 </button>
         </div>
 

@@ -4,40 +4,49 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
-function LoginForm() {
-  const { login } = useAuth();
-  const router = useRouter();
-
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(email);
-    router.push("/");
-  };
+function LoginForm(children) {
+  const { mode, user, handleChange, handleSubmit } = children;
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm"
-    >
-      <h2 className="text-2xl font-bold text-green-600 mb-6 text-center">
-        Anandwan Login
-      </h2>
-
+    <form className="space-y-4" onSubmit={handleSubmit}>
+      {/* Email */}
       <input
-        type="email"
-        placeholder="Enter email"
-        className="w-full border px-3 py-2 rounded-md mb-4"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        type="text"
+        onChange={handleChange}
+        name="username"
+        value={user.username}
+        placeholder="Email"
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
       />
 
+      {/* Password */}
+      <input
+        type="password"
+        name="password"
+        onChange={handleChange}
+        value={user.password}
+        placeholder="Password"
+        className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
+      />
+
+      {/* Confirm Password (Signup only) */}
+      {mode === "signup" && (
+        <input
+          type="password"
+          name="confirmPassword"
+          onChange={handleChange}
+          value={user.confirmPassword}
+          placeholder="Confirm Password"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
+        />
+      )}
+
+      {/* Button */}
       <button
         type="submit"
-        className="w-full bg-green-500 text-white py-2 rounded-md"
+        className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
       >
-        Login
+        {mode === "login" ? "Login" : "Sign Up"}
       </button>
     </form>
   );

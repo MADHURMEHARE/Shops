@@ -1,21 +1,30 @@
 "use client";
 
-import { useAuth } from "@/context/AuthContext";
-import { useRouter } from "next/router";
+// import { useAuth } from "@/context/AuthContext";
+// import { useRouter } from "next/router";
 import { useState } from "react";
+import LoginForm from "./LoginForm";
 
 export default function LoginForm2() {
   const [mode, setMode] = useState("login");
   const [role, setRole] = useState("user");
-  const [username, setUsername] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const { login } = useAuth();
-  const router = useRouter();
+  const [user, setuser] = useState({
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+  // const { login } = useAuth();
+  // const router = useRouter();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setuser({ ...user, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    router.push("/");
+    console.log(user)
+    // router.push("/");
   };
 
   return (
@@ -79,45 +88,12 @@ export default function LoginForm2() {
             {mode === "login" ? "Login to your account" : "Create an account"}
           </h2>
 
-          <form className="space-y-4">
-            {/* Email */}
-            <input
-              type="text"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-              placeholder="Email"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
-            />
-
-            {/* Password */}
-            <input
-              type="password"
-              onChange={(e) => setUserPassword(e.target.value)}
-              value={userPassword}
-              placeholder="Password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
-            />
-
-            {/* Confirm Password (Signup only) */}
-            {mode === "signup" && (
-              <input
-                type="password"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                value={confirmPassword}
-                placeholder="Confirm Password"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-200"
-              />
-            )}
-
-            {/* Button */}
-            <button
-              type="submit"
-              onSubmit={handleSubmit}
-              className="w-full py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
-            >
-              {mode === "login" ? "Login" : "Sign Up"}
-            </button>
-          </form>
+          <LoginForm
+            mode={mode}
+            user={user}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
         </div>
       </div>
     </div>
