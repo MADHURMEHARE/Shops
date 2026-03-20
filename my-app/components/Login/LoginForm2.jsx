@@ -23,7 +23,7 @@ export default function LoginForm2() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user)
+    console.log(user);
     // router.push("/");
   };
 
