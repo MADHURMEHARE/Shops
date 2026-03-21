@@ -25,7 +25,7 @@ export default function HomePage() {
       {/* HERO */}
       <section className="relative h-[70vh] flex items-center justify-center text-white text-center">
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/30 to-black/60" />
 
         <motion.div
           initial={{ opacity: 0, y: 60 }}
@@ -39,15 +39,15 @@ export default function HomePage() {
 
           
 
-          <Link href="/product">
-            <motion.button
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-green-500 px-8 py-3 rounded-lg font-semibold"
-            >
-              Order fresh groceries
-            </motion.button>
-          </Link>
+       <Link href="/product">
+  <motion.button
+    whileHover={{ scale: 1.08 }}
+    whileTap={{ scale: 0.95 }}
+    className="bg-green-500 px-8 py-3 rounded-lg font-semibold"
+  >
+    Order fresh groceries
+  </motion.button>
+</Link>
         </motion.div>
       </section>
 
@@ -64,7 +64,7 @@ export default function HomePage() {
           <motion.img
             whileHover={{ scale: 1.03 }}
             src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=800"
-            className="rounded-xl shadow-lg w-full h-[350px] object-cover"
+            className="rounded-xl shadow-lg w-full h-87.5 object-cover"
           />
 
           <div>
@@ -117,7 +117,7 @@ export default function HomePage() {
           <motion.img
             whileHover={{ scale: 1.03 }}
             src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=800"
-            className="rounded-xl shadow-lg w-full h-[350px] object-cover"
+            className="rounded-xl shadow-lg w-full h-87.5 object-cover"
           />
 
         </div>
@@ -136,7 +136,7 @@ export default function HomePage() {
           <motion.img
             whileHover={{ scale: 1.03 }}
             src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=300"
-            className="rounded-xl shadow-lg w-full h-[350px] object-cover"
+            className="rounded-xl shadow-lg w-full h-87.5 object-cover"
           />
 
           <div>
