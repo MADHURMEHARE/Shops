@@ -7,12 +7,15 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "next lint --dir .",
-      "test": "echo \"No tests yet\""
+    "test": "echo \"No tests yet\""
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "botid": "^1.5.11",
     "framer-motion": "^12.36.0",
+    "jsonwebtoken": "^9.0.3",
     "lucide-react": "^0.577.0",
+    "mongodb": "^7.1.0",
     "next": "^16.1.6",
     "next-pwa": "^5.6.0",
     "razorpay": "^2.9.6",
