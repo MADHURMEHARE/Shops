@@ -6,7 +6,8 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+     "lint": "next lint",
+      "test": "echo \"No tests yet\""
   },
   "dependencies": {
     "botid": "^1.5.11",
